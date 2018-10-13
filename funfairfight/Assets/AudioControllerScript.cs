@@ -28,7 +28,28 @@ public class AudioControllerScript : MonoBehaviour
         instance = this;
     }
 
-    void playBlood()
+    public void playGfxScooter()
+    {
+        gfxScooter.Play();
+    }
+    public void playGfxHitTheLukas()
+    {
+        gfxHitTheLukas.Play();
+    }
+    public void playGfxGrabbler()
+    {
+        gfxGrabbler.Play();
+    }
+    public void playGfxFerisWheel()
+    {
+        gfxFerisWheel.Play();
+    }
+    public void playGfxAirGun()
+    {
+        gfxAirGun.Play();
+    }
+
+    void playGfxBlood()
     {
         switch (new System.Random().Next(0, 3)) {
             case 0: gfxBlood0.Play(); break;
@@ -38,7 +59,7 @@ public class AudioControllerScript : MonoBehaviour
         }
     }
 
-    void playExplosion()
+    void playGfxExplosion()
     {
         switch (new System.Random().Next(0, 3)) {
             case 0: gfxExplosion0.Play(); break;
