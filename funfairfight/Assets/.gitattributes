@@ -1,0 +1,10 @@
+Image/airgun_btn1.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_hit_the_lukas_btn2560.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_hit_the_lukas_btn2561.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_scooter_btn2560.png filter=lfs diff=lfs merge=lfs -text
+Image/airgun_btn0.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_ferris_wheel_btn2561.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_grabbler_btn2560.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_grabbler_btn2561.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_scooter_btn2561.png filter=lfs diff=lfs merge=lfs -text
+Image/sprite_ferris_wheel_btn2560.png filter=lfs diff=lfs merge=lfs -text

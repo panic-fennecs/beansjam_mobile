@@ -728,8 +728,8 @@ MonoBehaviour:
   PressedFerrisWheel: {fileID: 21300000, guid: 8c3f9efe06e0265b996aadd67a8a0535, type: 3}
   ReleasedFerrisWheel: {fileID: 21300000, guid: 95adc1e44611a5a8b86865c62772f874,
     type: 3}
-  PressedAirGun: {fileID: 21300000, guid: 6541ed0f2c32d1d3f9a15dce04d73d7f, type: 3}
-  ReleasedAirGun: {fileID: 21300000, guid: 6b66783f8a76336599fe76ee22774a83, type: 3}
+  PressedAirGun: {fileID: 21300000, guid: b87e4bf9aaf794c5d9367f38a8886d66, type: 3}
+  ReleasedAirGun: {fileID: 21300000, guid: 45e546cb265a51e688635d6761f8cb10, type: 3}
   PressedHitTheLukas: {fileID: 21300000, guid: e12eefaac4b73ec6aa591a60814ebb96, type: 3}
   ReleasedHitTheLukas: {fileID: 21300000, guid: 6902d7cba5781eac1b34130e2e412dff,
     type: 3}
