@@ -28,11 +28,6 @@ public class AudioControllerScript : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        gfxAirGun.Play();
-    }
-
     void playBlood()
     {
         switch (new System.Random().Next(0, 3)) {
