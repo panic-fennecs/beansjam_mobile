@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     private const int NUM_BUTTONS = 5;
 	private const int MAX_HEALTH = 3;
+    private const float BUTTON_POSITION = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         
         float y = -3.5f;
         float y_diff = 7.0f / (attacks.Length - 1);
-        float x = (PlayerID - 0.5f)*2.0f*4.5f;
+        float x = (PlayerID - 0.5f)*2.0f*BUTTON_POSITION;
 
         for (int i = 0; i < attacks.Length; i++)
         {
