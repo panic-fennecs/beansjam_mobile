@@ -1,0 +1,13 @@
+gfx_explosion_0.wav filter=lfs diff=lfs merge=lfs -text
+gfx_explosion_1.wav filter=lfs diff=lfs merge=lfs -text
+gfx_explosion_2.wav filter=lfs diff=lfs merge=lfs -text
+gfx_explosion_3.wav filter=lfs diff=lfs merge=lfs -text
+gfx_grabbler.wav filter=lfs diff=lfs merge=lfs -text
+gfx_blood_1.wav filter=lfs diff=lfs merge=lfs -text
+gfx_blood_2.wav filter=lfs diff=lfs merge=lfs -text
+gfx_blood_3.wav filter=lfs diff=lfs merge=lfs -text
+gfx_hitthelukas.wav filter=lfs diff=lfs merge=lfs -text
+gfx_airgun.wav filter=lfs diff=lfs merge=lfs -text
+gfx_blood_0.wav filter=lfs diff=lfs merge=lfs -text
+gfx_scooter.wav filter=lfs diff=lfs merge=lfs -text
+music.mp3 filter=lfs diff=lfs merge=lfs -text
