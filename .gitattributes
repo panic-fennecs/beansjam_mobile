@@ -8,3 +8,4 @@ funfairfight/Assets/Image/scooter_btn0.png filter=lfs diff=lfs merge=lfs -text
 funfairfight/Assets/Image/scooter_btn1.png filter=lfs diff=lfs merge=lfs -text
 funfairfight/Assets/Image/sprite_grabbler0.png filter=lfs diff=lfs merge=lfs -text
 funfairfight/Assets/Image/sprite_grabbler1.png filter=lfs diff=lfs merge=lfs -text
+funfairfight/Assets/Image/coin.png filter=lfs diff=lfs merge=lfs -text

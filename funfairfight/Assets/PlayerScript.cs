@@ -9,17 +9,21 @@ public class PlayerScript : MonoBehaviour
     public GameObject ButtonPrefab;
     public int PlayerID;
     private Sprite[] Buttons;
-    private int LivePoints;
-
-    public Text LiveText;
+    private GameObject[] HealthMarks;
+	private int Health;
 
     private const int NUM_BUTTONS = 5;
+	private const int MAX_HEALTH = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        LivePoints = 3;
         Attack[] attacks = new[] { Attack.AirGun, Attack.AutoScooter, Attack.FerrisWheel, Attack.Grabbler, Attack.HitTheLukas };
+		HealthMarks = new GameObject[MAX_HEALTH];
+		for (int i = 0; i < MAX_HEALTH; i++) {
+			HealthMarks[i] = Instantiate(GameManagerScript.Instance.HealthPrefab, new Vector3(PlayerID*4.0f-2f + i, 4.0f, 0.0f), Quaternion.identity);
+		}
+		Health = MAX_HEALTH;
 
         Buttons = new Sprite[attacks.Length];
 
@@ -34,13 +38,10 @@ public class PlayerScript : MonoBehaviour
 
     public void DecLivePoints()
     {
-        LivePoints--;
-        LiveText.text = LivePoints.ToString();
-    }
-
-    public int GetLivePoints()
-    {
-        return LivePoints;
+		if (Health > 0) {
+			Destroy(HealthMarks[--Health]);
+			HealthMarks[Health] = null;
+		}
     }
 
     // Update is called once per frame
