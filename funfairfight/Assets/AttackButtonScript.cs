@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class AttackButtonScript : MonoBehaviour
 {
+    void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.ReleasedSprite;
+    }
+
     void Update()
     {
         for (int i = 0; i < Input.touchCount; i++) {
@@ -33,11 +38,11 @@ public class AttackButtonScript : MonoBehaviour
     }
 
     void AppearPressed() {
-        Debug.Log("pressed");
+        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.PressedSprite;
     }
 
     void AppearReleased() {
-        Debug.Log("released");
+        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.ReleasedSprite;
     }
 
     bool Collides(Vector2 touch_pos) {

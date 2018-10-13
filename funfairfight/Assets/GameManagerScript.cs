@@ -16,11 +16,22 @@ enum Attack
 
 public class GameManagerScript : MonoBehaviour
 {
+    public static GameManagerScript Instance;
+    public Sprite PressedSprite;
+    public Sprite ReleasedSprite;
+
     public GameObject[] Players;
     public Text ShowText;
 
     private Attack[] player_choices;
     private bool round_running;
+
+    void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+        }
+    }
 
     // Shows the Countdown
     IEnumerator StartRound()
