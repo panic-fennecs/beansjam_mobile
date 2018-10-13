@@ -14,11 +14,16 @@ public class PlayerScript : MonoBehaviour
 
     private const int NUM_BUTTONS = 5;
 	private const int MAX_HEALTH = 3;
+    private const float BUTTON_POSITION = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Attack[] attacks = new[] { Attack.AirGun, Attack.AutoScooter, Attack.FerrisWheel, Attack.Grabbler, Attack.HitTheLukas };
+        Attack[] attacks = new[] { Attack.AirGun,
+                                   Attack.AutoScooter,
+                                   Attack.FerrisWheel,
+                                   Attack.Grabbler,
+                                   Attack.HitTheLukas };
 		HealthMarks = new GameObject[MAX_HEALTH];
 		for (int i = 0; i < MAX_HEALTH; i++) {
 			HealthMarks[i] = Instantiate(GameManagerScript.Instance.HealthPrefab, GetHealthMarkPosition(i), Quaternion.identity);
@@ -26,6 +31,10 @@ public class PlayerScript : MonoBehaviour
 		Health = MAX_HEALTH;
 
         Buttons = new Sprite[attacks.Length];
+        
+        float y = -3.5f;
+        float y_diff = 7.0f / (attacks.Length - 1);
+        float x = (PlayerID - 0.5f)*2.0f*BUTTON_POSITION;
 
         for (int i = 0; i < attacks.Length; i++)
         {
@@ -33,6 +42,7 @@ public class PlayerScript : MonoBehaviour
             btn.GetComponent<AttackButtonScript>().PlayerID = PlayerID;
             btn.GetComponent<AttackButtonScript>().attack = attacks[i];
             Buttons[i] = btn.GetComponent<Sprite>();
+            y += y_diff;
         }
     }
 
@@ -76,7 +86,7 @@ public class PlayerScript : MonoBehaviour
 		if (PlayerID == 1) {
 			x = 1.0f - x;
 		}
-		float t = size*2.0f;
+		float t = size;
 		float y = i*((1.0f-2.0f*t) / (NUM_BUTTONS - 1)) + t;
 
 		return new Vector3(x, y, 0.0f);
