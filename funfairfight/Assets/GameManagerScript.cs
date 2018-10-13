@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
 
-enum Attack
+public enum Attack
 {
     Unselected,
     FerrisWheel,
@@ -58,7 +58,7 @@ public class GameManagerScript : MonoBehaviour
         // TODO
     }
 
-    void PlayerAttackChoice(int player_id, Attack attack)
+    public void PlayerAttackChoice(int player_id, Attack attack)
     {
         if (player_id >= 0 && player_id < 2)
         {
@@ -82,13 +82,19 @@ public class GameManagerScript : MonoBehaviour
     {
         switch (attack)
         {
-            case Attack.Unselected:
-                return new Attack[0];
             case Attack.AirGun:
-                return new[] {Attack.FerrisWheel, Attack.HitTheLukas};
+                return new[] { Attack.FerrisWheel, Attack.Grabbler };
+            case Attack.Grabbler:
+                return new[] { Attack.AutoScooter, Attack.FerrisWheel };
+            case Attack.AutoScooter:
+                return new[] { Attack.AirGun, Attack.HitTheLukas };
+            case Attack.HitTheLukas:
+                return new[] { Attack.AirGun, Attack.Grabbler };
+            case Attack.FerrisWheel:
+                return new[] { Attack.HitTheLukas, Attack.AutoScooter };
         }
 
-        return new Attack[0]; // TODO
+        return new Attack[0];
     }
 
     // if the first attack wins: 0
@@ -134,10 +140,6 @@ public class GameManagerScript : MonoBehaviour
         {
             round_running = true;
             ResetPlayerChoices();
-
-            // TODO remove
-            PlayerAttackChoice(0, Attack.AirGun);
-            PlayerAttackChoice(1, Attack.AutoScooter);
             
             StartCoroutine("StartRound");
         }

@@ -19,14 +19,16 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         LivePoints = 3;
-        Array attacks = Enum.GetValues(typeof(Attack));
+        Attack[] attacks = new[] { Attack.AirGun, Attack.AutoScooter, Attack.FerrisWheel, Attack.Grabbler, Attack.HitTheLukas };
 
         Buttons = new Sprite[attacks.Length];
 
         for (int i = 0; i < attacks.Length; i++)
         {
-            Sprite btn = Instantiate(ButtonPrefab, new Vector3(PlayerID*3.0f-1.5f, i*0.8f, 0.0f), Quaternion.identity).GetComponent<Sprite>();
-            Buttons[i] = btn;
+            GameObject btn = Instantiate(ButtonPrefab, new Vector3(PlayerID*3.0f-1.5f, i*0.8f, 0.0f), Quaternion.identity);
+            btn.GetComponent<AttackButtonScript>().PlayerID = PlayerID;
+            btn.GetComponent<AttackButtonScript>().attack = attacks[i];
+            Buttons[i] = btn.GetComponent<Sprite>();
         }
     }
 

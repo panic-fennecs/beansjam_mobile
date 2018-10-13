@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class AttackButtonScript : MonoBehaviour
 {
+    public int PlayerID;
+    public Attack attack;
+
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.ReleasedSprite;
@@ -22,6 +25,7 @@ public class AttackButtonScript : MonoBehaviour
             if (t.phase == TouchPhase.Began) {
                 if (collides_present) {
                     AppearPressed();
+                    OnPress();
                 }
             }
             if (t.phase == TouchPhase.Moved) {
@@ -35,6 +39,11 @@ public class AttackButtonScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnPress()
+    {
+        GameManagerScript.Instance.PlayerAttackChoice(PlayerID, attack);
     }
 
     void AppearPressed() {
