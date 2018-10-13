@@ -82,12 +82,11 @@ public class PlayerScript : MonoBehaviour
 	Vector3 GetAttackButtonPositionViewport(int i) {
 		float size = Factor() * GameManagerScript.Instance.PressedAutoScooter.bounds.size.x;
 
-		float x = 3.0f * size / 2.0f;
+		float x = 1.0f * size / 2.0f;
 		if (PlayerID == 1) {
 			x = 1.0f - x;
 		}
-		float t = size;
-		float y = i*((1.0f-2.0f*t) / (NUM_BUTTONS - 1)) + t;
+		float y = i*((1.0f-2.0f*size) / (NUM_BUTTONS - 1)) + size;
 
 		return new Vector3(x, y, 0.0f);
 	}
