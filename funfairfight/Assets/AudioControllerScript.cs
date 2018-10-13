@@ -21,11 +21,13 @@ public class AudioControllerScript : MonoBehaviour
     public AudioSource gfxBlood1;
     public AudioSource gfxBlood2;
     public AudioSource gfxBlood3;
+    private System.Random random;
 
     void Awake()
     {
         Assert.IsTrue(!instance);
         instance = this;
+        random = new System.Random((int)System.DateTime.Now.Ticks);
     }
 
     public void playGfxScooter()
@@ -51,7 +53,7 @@ public class AudioControllerScript : MonoBehaviour
 
     void playGfxBlood()
     {
-        switch (new System.Random().Next(0, 3)) {
+        switch (random.Next(0, 3)) {
             case 0: gfxBlood0.Play(); break;
             case 1: gfxBlood1.Play(); break;
             case 2: gfxBlood2.Play(); break;
@@ -61,7 +63,7 @@ public class AudioControllerScript : MonoBehaviour
 
     void playGfxExplosion()
     {
-        switch (new System.Random().Next(0, 3)) {
+        switch (random.Next(0, 3)) {
             case 0: gfxExplosion0.Play(); break;
             case 1: gfxExplosion1.Play(); break;
             case 2: gfxExplosion2.Play(); break;
