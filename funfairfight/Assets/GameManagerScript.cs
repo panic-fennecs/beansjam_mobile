@@ -24,6 +24,8 @@ public class GameManagerScript : MonoBehaviour
     public Sprite PressedAutoScooter, ReleasedAutoScooter;
     public Sprite PressedGrabbler, ReleasedGrabbler;
 
+	public GameObject HealthPrefab;
+
     public GameObject[] Players;
     public Text ShowText;
 
@@ -106,9 +108,12 @@ public class GameManagerScript : MonoBehaviour
     // if draw: -1
     int GetWinner(Attack first_attack, Attack second_attack)
     {
-        if (first_attack == second_attack)
-        {
+        if (first_attack == second_attack) {
             return -1;
+        } else if (first_attack == Attack.Unselected) {
+            return 1;
+        } else if (second_attack == Attack.Unselected) {
+            return 0;
         } else {
             Attack[] loosing_attacks = GetLosingAttacks(first_attack);
             foreach (Attack a in loosing_attacks)
