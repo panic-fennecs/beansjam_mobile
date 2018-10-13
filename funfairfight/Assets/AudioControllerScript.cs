@@ -7,7 +7,6 @@ public class AudioControllerScript : MonoBehaviour
 {
     public static AudioControllerScript instance;
 
-    public AudioSource music;
     public AudioSource gfxScooter;
     public AudioSource gfxHitTheLukas;
     public AudioSource gfxGrabbler;
