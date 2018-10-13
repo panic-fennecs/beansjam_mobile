@@ -8,7 +8,7 @@ public class AttackButtonScript : MonoBehaviour
 
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.ReleasedSprite;
+        AppearReleased();
     }
 
     void Update()
@@ -47,11 +47,33 @@ public class AttackButtonScript : MonoBehaviour
     }
 
     void AppearPressed() {
-        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.PressedSprite;
+		SpriteRenderer r = GetComponent<SpriteRenderer>();
+		if (attack == Attack.FerrisWheel) {
+			r.sprite = GameManagerScript.Instance.PressedFerrisWheel;
+		} else if (attack == Attack.HitTheLukas) {
+			r.sprite = GameManagerScript.Instance.PressedHitTheLukas;
+		} else if (attack == Attack.AutoScooter) {
+			r.sprite = GameManagerScript.Instance.PressedAutoScooter;
+		} else if (attack == Attack.Grabbler) {
+			r.sprite = GameManagerScript.Instance.PressedGrabbler;
+		} else if (attack == Attack.AirGun) {
+			r.sprite = GameManagerScript.Instance.PressedAirGun;
+		}
     }
 
     void AppearReleased() {
-        GetComponent<SpriteRenderer>().sprite = GameManagerScript.Instance.ReleasedSprite;
+		SpriteRenderer r = GetComponent<SpriteRenderer>();
+		if (attack == Attack.FerrisWheel) {
+			r.sprite = GameManagerScript.Instance.ReleasedFerrisWheel;
+		} else if (attack == Attack.HitTheLukas) {
+			r.sprite = GameManagerScript.Instance.ReleasedHitTheLukas;
+		} else if (attack == Attack.AutoScooter) {
+			r.sprite = GameManagerScript.Instance.ReleasedAutoScooter;
+		} else if (attack == Attack.Grabbler) {
+			r.sprite = GameManagerScript.Instance.ReleasedGrabbler;
+		} else if (attack == Attack.AirGun) {
+			r.sprite = GameManagerScript.Instance.ReleasedAirGun;
+		}
     }
 
     bool Collides(Vector2 touch_pos) {

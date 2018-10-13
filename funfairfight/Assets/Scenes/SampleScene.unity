@@ -535,8 +535,13 @@ PrefabInstance:
         type: 3}
       propertyPath: ButtonPrefab
       value: 
-      objectReference: {fileID: 404508081587620001, guid: e4a6e4529ae86b862a14873265e24269,
+      objectReference: {fileID: 5062674312398347118, guid: e4a6e4529ae86b862a14873265e24269,
         type: 3}
+    - target: {fileID: 1366196706261482787, guid: 62739d420b68e0454a1b793c7e9099c3,
+        type: 3}
+      propertyPath: PlayerID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62739d420b68e0454a1b793c7e9099c3, type: 3}
 --- !u!1001 &1205854768
@@ -615,7 +620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ButtonPrefab
       value: 
-      objectReference: {fileID: 404508081587620001, guid: e4a6e4529ae86b862a14873265e24269,
+      objectReference: {fileID: 5062674312398347118, guid: e4a6e4529ae86b862a14873265e24269,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62739d420b68e0454a1b793c7e9099c3, type: 3}
@@ -720,6 +725,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b6121296b27074087677646e231e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PressedFerrisWheel: {fileID: 21300000, guid: 8c3f9efe06e0265b996aadd67a8a0535, type: 3}
+  ReleasedFerrisWheel: {fileID: 21300000, guid: 95adc1e44611a5a8b86865c62772f874,
+    type: 3}
+  PressedAirGun: {fileID: 21300000, guid: 6541ed0f2c32d1d3f9a15dce04d73d7f, type: 3}
+  ReleasedAirGun: {fileID: 21300000, guid: 6b66783f8a76336599fe76ee22774a83, type: 3}
+  PressedHitTheLukas: {fileID: 21300000, guid: e12eefaac4b73ec6aa591a60814ebb96, type: 3}
+  ReleasedHitTheLukas: {fileID: 21300000, guid: 6902d7cba5781eac1b34130e2e412dff,
+    type: 3}
+  PressedAutoScooter: {fileID: 21300000, guid: 5a1fcbb8eb0b709f88c2e879d6631422, type: 3}
+  ReleasedAutoScooter: {fileID: 21300000, guid: 325180435f1364342b4f4494662496ff,
+    type: 3}
+  PressedGrabbler: {fileID: 21300000, guid: a55b79181d282a66993a18ae7181770a, type: 3}
+  ReleasedGrabbler: {fileID: 21300000, guid: 84bbfa7fc4598732e927d37648a386b0, type: 3}
   Players:
   - {fileID: 433283596}
   - {fileID: 1633397453}

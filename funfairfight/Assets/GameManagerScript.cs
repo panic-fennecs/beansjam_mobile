@@ -17,8 +17,12 @@ public enum Attack
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript Instance;
-    public Sprite PressedSprite;
-    public Sprite ReleasedSprite;
+
+    public Sprite PressedFerrisWheel, ReleasedFerrisWheel;
+    public Sprite PressedAirGun, ReleasedAirGun;
+    public Sprite PressedHitTheLukas, ReleasedHitTheLukas;
+    public Sprite PressedAutoScooter, ReleasedAutoScooter;
+    public Sprite PressedGrabbler, ReleasedGrabbler;
 
     public GameObject[] Players;
     public Text ShowText;

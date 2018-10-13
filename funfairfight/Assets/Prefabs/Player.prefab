@@ -92,3 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9f5e412f50fc75c89349bfa9b6d7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ButtonPrefab: {fileID: 5062674312398347118, guid: e4a6e4529ae86b862a14873265e24269,
+    type: 3}
+  PlayerID: 0
+  LiveText: {fileID: 0}
