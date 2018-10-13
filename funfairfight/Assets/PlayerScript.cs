@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
-    private Button[] Buttons;
+    public GameObject ButtonPrefab;
+    public int PlayerID;
+    private Sprite[] Buttons;
     private int LivePoints;
 
     public Text LiveText;
@@ -16,6 +19,15 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         LivePoints = 3;
+        Array attacks = Enum.GetValues(typeof(Attack));
+
+        Buttons = new Sprite[attacks.Length];
+
+        for (int i = 0; i < attacks.Length; i++)
+        {
+            Sprite btn = Instantiate(ButtonPrefab, new Vector3(PlayerID*3.0f-1.5f, i*0.8f, 0.0f), Quaternion.identity).GetComponent<Sprite>();
+            Buttons[i] = btn;
+        }
     }
 
     public void DecLivePoints()
