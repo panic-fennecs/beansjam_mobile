@@ -24,6 +24,8 @@ public class GameManagerScript : MonoBehaviour
     public Sprite PressedAutoScooter, ReleasedAutoScooter;
     public Sprite PressedGrabbler, ReleasedGrabbler;
 
+	public GameObject HealthPrefab;
+
     public GameObject[] Players;
     public Text ShowText;
 
