@@ -82,7 +82,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsShooting", true);
                         break;
                     case Attack.HitTheLukas:
-                        // Ken getroffen werden
+                        animators[0].SetBool("IsShot", true);
                         // RikkeHammer werfen
                         break;
                     case Attack.AutoScooter:
@@ -149,10 +149,12 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
+                        animators[0].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.FerrisWheel:
                         break;
                     case Attack.AirGun:
+                        animators[0].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.HitTheLukas:
                         animators[0].SetBool("IsHittingLukasBasic", true);
@@ -160,6 +162,7 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.AutoScooter:
                         break;
                     case Attack.Grabbler:
+                        animators[0].SetBool("IsHammerAttack", true);
                         break;
                 }
                 break;
@@ -203,6 +206,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsScooterCrash2", false);
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsFerrisAttack", false);
+            animator.SetBool("IsHammerAttack", false);
         }
     }
     
