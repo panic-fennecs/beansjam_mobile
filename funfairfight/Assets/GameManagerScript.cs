@@ -76,6 +76,7 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.FerrisWheel:
+                        animators[1].SetBool("IsFerrisAttack", true);
                         break;
                     case Attack.AirGun:
                         animators[0].SetBool("IsShot", true);
@@ -112,7 +113,7 @@ public class GameManagerScript : MonoBehaviour
                         // AirGun schießt ab
                         break;
                     case Attack.HitTheLukas:
-                        animators[0].SetBool("IsFerrisAttack", true);
+                        animators[1].SetBool("IsFerrisAttack", true);
                         break;
                     case Attack.AutoScooter:
                         // Ken chillt
@@ -152,6 +153,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.FerrisWheel:
+                        animators[1].SetBool("IsFerrisAttack", true);
                         break;
                     case Attack.AirGun:
                         animators[0].SetBool("IsHammerAttack", true);
