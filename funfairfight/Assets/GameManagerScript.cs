@@ -95,8 +95,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsScooter", true);
                         break;
                     case Attack.Grabbler: // TODO: maxi macht zeug
-                        // GrabblerAttack
-                        animators[0].SetBool("IsGrabbled", true);
+                        animators[0].SetBool("IsIdleGrabbed", true);
                         break;
                 }
 
@@ -260,6 +259,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsFerrisGrabbed", false);
             animator.SetBool("IsScooter", false);
             animator.SetBool("IsDodgeGrabbed", false);
+            animator.SetBool("IsIdleGrabbed", false);
         }
     }
     
