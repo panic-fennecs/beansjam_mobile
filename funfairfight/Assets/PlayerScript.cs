@@ -105,4 +105,14 @@ public class PlayerScript : MonoBehaviour
 			Buttons[i].GetComponent<AttackButtonScript>().Hide();
 		}
 	}
+
+	public void HideHealthMarks() {
+		for (int i = 0; i < HealthMarks.Length; i++)
+			HealthMarks[i].SetActive(false);
+	}
+
+	public int GetHealth()
+	{
+		return Health;
+	}
 }

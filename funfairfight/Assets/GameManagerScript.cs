@@ -33,6 +33,7 @@ public class GameManagerScript : MonoBehaviour
 
     public Attack[] player_choices;
     private bool round_running;
+    private bool game_running;
 
     void Awake()
     {
@@ -65,6 +66,8 @@ public class GameManagerScript : MonoBehaviour
         Fight();
         ResetAllAnimations();
         yield return new WaitForSeconds(0.5f);
+
+        CheckWinConditions();
         round_running = false;
     }
     
@@ -326,6 +329,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        game_running = true;
         ResetPlayerChoices();
         round_running = false;
         animators = new[] {Players[0].GetComponent<Animator>(), Players[1].GetComponent<Animator>()};
@@ -339,13 +343,15 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!round_running)
-        {
-            round_running = true;
-            ResetPlayerChoices();
-			ShowButtons();
-            
-            StartCoroutine("StartRound");
+        if (game_running) {
+            if (!round_running)
+            {
+                round_running = true;
+                ResetPlayerChoices();
+                ShowButtons();
+                
+                StartCoroutine("StartRound");
+            }
         }
     }
 
@@ -360,4 +366,15 @@ public class GameManagerScript : MonoBehaviour
 			Players[i].GetComponent<PlayerScript>().HideButtons();
 		}
 	}
+
+    void CheckWinConditions()
+    {
+        for (int i = 0; i < Players.Length; i++) {
+            if (Players[i].GetComponent<PlayerScript>().GetHealth() == 0) {
+                game_running = false;
+                GlobalScript.LoadScene("EndScreen", i);
+                return;
+            }
+        }
+    }
 }
