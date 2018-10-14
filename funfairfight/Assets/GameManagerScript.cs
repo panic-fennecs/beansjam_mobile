@@ -84,7 +84,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.HitTheLukas:
                         animators[0].SetBool("IsShot", true);
-                        // RikkeHammer werfen
+                        animators[1].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.AutoScooter:
                         // Ken getroffen werden
@@ -137,7 +137,7 @@ public class GameManagerScript : MonoBehaviour
                         // Beide schießen sich ab
                         break;
                     case Attack.HitTheLukas:
-                        // Hammer werfen
+                        animators[1].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.AutoScooter:
                         // 
@@ -160,6 +160,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.HitTheLukas:
                         animators[0].SetBool("IsHittingLukasBasic", true);
+                        animators[1].SetBool("IsHittingLukasBasic", true);
                         break;
                     case Attack.AutoScooter:
                         break;
@@ -180,7 +181,6 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.AirGun:
                         break;
                     case Attack.HitTheLukas:
-                        animators[0].SetBool("IsHittingLukasBasic", true);
                         break;
                     case Attack.AutoScooter:
                         break;
@@ -191,6 +191,22 @@ public class GameManagerScript : MonoBehaviour
                 }
                 break;
             case Attack.Grabbler:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        animators[1].SetBool("IsHammerAttack", true);
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                }
                 break;
         }
     }
