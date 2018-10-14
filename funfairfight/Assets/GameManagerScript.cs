@@ -131,13 +131,14 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsShot", true);
                         break;
                     case Attack.FerrisWheel:
-                        // abschießen
+                        animators[0].SetBool("IsShooting", true);
                         break;
                     case Attack.AirGun:
                         // Beide schießen sich ab
                         break;
                     case Attack.HitTheLukas:
-                        // Hammer werfen
+                        // Rikke Hammer werfen
+                        animators[0].SetBool("IsShot", true);
                         break;
                     case Attack.AutoScooter:
                         // 
