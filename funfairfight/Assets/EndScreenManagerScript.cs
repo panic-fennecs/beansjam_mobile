@@ -14,9 +14,12 @@ public class EndScreenManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(GlobalScript.winner);
         Players[1 - GlobalScript.winner].SetActive(false);
         Players[GlobalScript.winner].GetComponent<PlayerScript>().HideButtons();
         Players[GlobalScript.winner].GetComponent<PlayerScript>().HideHealthMarks();
+        Players[1 - GlobalScript.winner].GetComponent<PlayerScript>().HideButtons();
+        Players[1 - GlobalScript.winner].GetComponent<PlayerScript>().HideHealthMarks();
 
         isShooting = false;
         animator = Players[GlobalScript.winner].GetComponent<Animator>();

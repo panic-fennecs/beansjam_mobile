@@ -376,7 +376,7 @@ public class GameManagerScript : MonoBehaviour
         for (int i = 0; i < Players.Length; i++) {
             if (Players[i].GetComponent<PlayerScript>().GetHealth() == 0) {
                 game_running = false;
-                GlobalScript.LoadScene("EndScreen", i);
+                GlobalScript.LoadScene("EndScreen", 1 - i);
                 return;
             }
         }

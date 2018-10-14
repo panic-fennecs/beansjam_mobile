@@ -102,7 +102,9 @@ public class PlayerScript : MonoBehaviour
 
 	public void HideButtons() {
 		for (int i = 0; i < NUM_BUTTONS; i++) {
-			Buttons[i].GetComponent<AttackButtonScript>().Hide();
+			AttackButtonScript s = Buttons[i].GetComponent<AttackButtonScript>();
+			if (s)
+				Buttons[i].GetComponent<AttackButtonScript>().Hide();
 		}
 	}
 
