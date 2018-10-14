@@ -73,7 +73,9 @@ public class GameManagerScript : MonoBehaviour
     
     void PlayAnimation()
     {
-        AudioControllerScript.instance.playGfxBlood();
+        if (player_choices[0] != Attack.Unselected || player_choices[1] != Attack.Unselected) {
+            AudioControllerScript.instance.playGfxBlood();
+        }
         AudioControllerScript.instance.playSoundByAttack(player_choices[0]);
         AudioControllerScript.instance.playSoundByAttack(player_choices[1]);
 
@@ -212,6 +214,7 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.AutoScooter: // TODO: nachpatchen
                         animators[0].SetBool("IsScooterCrash2", true);
                         animators[1].SetBool("IsScooterCrash2", true);
+                        AudioControllerScript.instance.playGfxExplosion();
                         break;
                     case Attack.Grabbler: // worked
                         animators[0].SetBool("IsScooterCrash2", true);
