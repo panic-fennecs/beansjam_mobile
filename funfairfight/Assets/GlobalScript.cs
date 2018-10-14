@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GlobalScript : MonoBehaviour
 {
-    public static int winner;
+    public static int winner = 0;
 
     public static void LoadScene(string sceneName, int winner = 0) {
         GlobalScript.winner = winner;

@@ -141,7 +141,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.AirGun:
                         animators[0].SetBool("IsShootDraw", true);
-                        animators[1].SetBool("IsShootDraw", true);
+                        animators[1].SetBool("IsShootPatt", true);
                         break;
                     case Attack.HitTheLukas: // TODO: worked (naja)
                         animators[0].SetBool("IsShot", true);
@@ -152,6 +152,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsScooter", true);
                         break;
                     case Attack.Grabbler: // TODO: fehlt
+                        animators[0].SetBool("IsShooting", true);
+                        animators[1].SetBool("IsShot", true);
                         break;
                 }
                 break;
@@ -223,6 +225,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsFerrisGrabble", true);
                         break;
                     case Attack.AirGun: // TODO: animation?
+                        animators[0].SetBool("IsShooting", true);
+                        animators[1].SetBool("IsShot", true);
                         break;
                     case Attack.HitTheLukas: 
                         animators[0].SetBool("IsHit", true);
@@ -233,6 +237,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsScooterCrash", true);
                         break;
                     case Attack.Grabbler:
+                        animators[0].SetBool("IsIdleGrabbed", true);
+                        animators[1].SetBool("IsIdleGrabble", true);                        
                         break;
                 }
                 break;
@@ -261,6 +267,8 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsShootDraw", false);
             animator.SetBool("IsDodgeGrabbed", false);
             animator.SetBool("IsIdleGrabbed", false);
+            animator.SetBool("IsIdleGrabble", false);
+            animator.SetBool("IsShootPatt", false);
         }
     }
     
@@ -376,7 +384,7 @@ public class GameManagerScript : MonoBehaviour
         for (int i = 0; i < Players.Length; i++) {
             if (Players[i].GetComponent<PlayerScript>().GetHealth() == 0) {
                 game_running = false;
-                GlobalScript.LoadScene("EndScreen", i);
+                GlobalScript.LoadScene("EndScreen", 1 - i);
                 return;
             }
         }
