@@ -73,6 +73,10 @@ public class GameManagerScript : MonoBehaviour
     
     void PlayAnimation()
     {
+        AudioControllerScript.instance.playGfxBlood();
+        AudioControllerScript.instance.playSoundByAttack(player_choices[0]);
+        AudioControllerScript.instance.playSoundByAttack(player_choices[1]);
+
         switch (player_choices[0])
         {
             case Attack.Unselected:
