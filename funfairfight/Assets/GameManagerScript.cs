@@ -23,11 +23,13 @@ public class GameManagerScript : MonoBehaviour
     public Sprite PressedAutoScooter, ReleasedAutoScooter;
     public Sprite PressedGrabbler, ReleasedGrabbler;
 
+    public Sprite[] CountdownSprites;
+    public GameObject CountdownShowSprite;
+
 	public GameObject HealthPrefab;
 
     public GameObject[] Players;
     private Animator[] animators;
-    public Text ShowText;
 
     private Attack[] player_choices;
     private bool round_running;
@@ -42,22 +44,25 @@ public class GameManagerScript : MonoBehaviour
     // Shows the Countdown
     IEnumerator StartRound()
     {
-        ShowText.text = "5";
+        SpriteRenderer r = CountdownShowSprite.GetComponent<SpriteRenderer>();
+        r.sprite = CountdownSprites[0];
+        r.enabled = true;
         yield return new WaitForSeconds(1.0f);
-        ShowText.text = "4";
+        r.sprite = CountdownSprites[1];
         yield return new WaitForSeconds(1.0f);
-        ShowText.text = "Fun";
+        r.sprite = CountdownSprites[2];
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "Fair";
+        r.sprite = CountdownSprites[3];
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "Fight";
+        r.sprite = CountdownSprites[4];
+        yield return new WaitForSeconds(0.1f);
+		HideButtons();
+        r.enabled = false;
         PlayAnimation();
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         Fight();
         ResetAllAnimations();
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "";
-        yield return new WaitForSeconds(2.0f);
         round_running = false;
     }
 
@@ -215,8 +220,21 @@ public class GameManagerScript : MonoBehaviour
         {
             round_running = true;
             ResetPlayerChoices();
+			ShowButtons();
             
             StartCoroutine("StartRound");
         }
     }
+
+	void ShowButtons() {
+		for (int i = 0; i < 2; i++) {
+			Players[i].GetComponent<PlayerScript>().ShowButtons();
+		}
+	}
+
+	void HideButtons() {
+		for (int i = 0; i < 2; i++) {
+			Players[i].GetComponent<PlayerScript>().HideButtons();
+		}
+	}
 }

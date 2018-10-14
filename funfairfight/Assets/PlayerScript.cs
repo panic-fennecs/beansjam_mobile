@@ -6,14 +6,15 @@ using System;
 
 public class PlayerScript : MonoBehaviour
 {
+	private const int MAX_HEALTH = 3;
+
     public GameObject ButtonPrefab;
     public int PlayerID;
-    private Sprite[] Buttons;
-    private GameObject[] HealthMarks;
-	private int Health;
+    private GameObject[] Buttons;
+    private GameObject[] HealthMarks = new GameObject[MAX_HEALTH];
+	private int Health = MAX_HEALTH;
 
     private const int NUM_BUTTONS = 5;
-	private const int MAX_HEALTH = 3;
     private const float BUTTON_POSITION = 5.0f;
 
     // Start is called before the first frame update
@@ -24,32 +25,26 @@ public class PlayerScript : MonoBehaviour
                                    Attack.FerrisWheel,
                                    Attack.Grabbler,
                                    Attack.HitTheLukas };
-		HealthMarks = new GameObject[MAX_HEALTH];
 		for (int i = 0; i < MAX_HEALTH; i++) {
 			HealthMarks[i] = Instantiate(GameManagerScript.Instance.HealthPrefab, GetHealthMarkPosition(i), Quaternion.identity);
 		}
-		Health = MAX_HEALTH;
 
-        Buttons = new Sprite[attacks.Length];
+        Buttons = new GameObject[attacks.Length];
         
-        float y = -3.5f;
-        float y_diff = 7.0f / (attacks.Length - 1);
-        float x = (PlayerID - 0.5f)*2.0f*BUTTON_POSITION;
-
         for (int i = 0; i < attacks.Length; i++)
         {
             GameObject btn = Instantiate(ButtonPrefab, GetAttackButtonPosition(i), Quaternion.identity);
             btn.GetComponent<AttackButtonScript>().PlayerID = PlayerID;
             btn.GetComponent<AttackButtonScript>().attack = attacks[i];
-            Buttons[i] = btn.GetComponent<Sprite>();
-            y += y_diff;
+            Buttons[i] = btn;
         }
     }
 
     public void DecLivePoints()
     {
 		if (Health > 0) {
-			Destroy(HealthMarks[--Health]);
+			Health--;
+			Destroy(HealthMarks[Health]);
 			HealthMarks[Health] = null;
 		}
     }
@@ -59,10 +54,6 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
-
-	int GetDirection() {
-		return 2*PlayerID - 1;
-	}
 
 	float Factor() {
 		return (Camera.main.WorldToViewportPoint(new Vector3(1, 0, 0)) - Camera.main.WorldToViewportPoint(new Vector3(0, 0, 0))).magnitude;
@@ -101,5 +92,17 @@ public class PlayerScript : MonoBehaviour
 		var v = Camera.main.ViewportToWorldPoint(GetAttackButtonPositionViewport(i));
 		v.z = 0;
 		return v;
+	}
+
+	public void ShowButtons() {
+		for (int i = 0; i < NUM_BUTTONS; i++) {
+			Buttons[i].GetComponent<AttackButtonScript>().Show();
+		}
+	}
+
+	public void HideButtons() {
+		for (int i = 0; i < NUM_BUTTONS; i++) {
+			Buttons[i].GetComponent<AttackButtonScript>().Hide();
+		}
 	}
 }
