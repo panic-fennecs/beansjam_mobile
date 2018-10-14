@@ -67,7 +67,7 @@ public class GameManagerScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         round_running = false;
     }
-
+    
     void PlayAnimation()
     {
         switch (player_choices[0])
@@ -203,6 +203,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
+                        animators[1].SetBool("IsFerrisGrabble", true);
                         break;
                     case Attack.AirGun:
                         break;
@@ -234,6 +235,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsHammerAttack", false);
             animator.SetBool("IsHit", false);
             animator.SetBool("IsFerrisShot", false);
+            animator.SetBool("IsFerrisGrabble", false);
         }
     }
     
