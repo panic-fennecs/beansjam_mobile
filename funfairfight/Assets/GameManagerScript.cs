@@ -96,6 +96,25 @@ public class GameManagerScript : MonoBehaviour
 
                 break;
             case Attack.FerrisWheel:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        animators[0].SetBool("IsFerrisWheelBasic", true);
+                        animators[1].SetBool("IsFerrisWheelBasic", true);
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 break;
             case Attack.AirGun:
                 switch (player_choices[1])
@@ -139,6 +158,28 @@ public class GameManagerScript : MonoBehaviour
                 }
                 break;
             case Attack.AutoScooter:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        animators[0].SetBool("IsScooterCrash", true);
+                        animators[1].SetBool("IsFerrisWheelBasic", true);
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        animators[0].SetBool("IsHittingLukasBasic", true);
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        animators[0].SetBool("IsScooterCrash2", true);
+                        animators[1].SetBool("IsGrabbled", true);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 break;
             case Attack.Grabbler:
                 break;
@@ -155,6 +196,10 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsShot", false);
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsHittingLukasBasic", false);
+            animator.SetBool("IsFerrisWheelBasic", false);
+            animator.SetBool("IsScooterCrash", false);
+            animator.SetBool("IsScooterCrash2", false);
+            animator.SetBool("IsGrabbled", false);
         }
     }
     
