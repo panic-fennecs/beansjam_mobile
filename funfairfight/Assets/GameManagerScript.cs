@@ -123,7 +123,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsFerrisWheelBasic", true);
                         animators[1].SetBool("IsScooterCrash", true);
                         break;
-                    case Attack.Grabbler: // TODO: noch machen
+                    case Attack.Grabbler: // worked
                         animators[0].SetBool("IsFerrisGrabbed", true);
                         break;
                 }
@@ -228,6 +228,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.AutoScooter: // TODO: Dodgen
+                        animators[0].SetBool("IsDodgeGrabbed", true);
                         animators[1].SetBool("IsScooterCrash", true);
                         break;
                     case Attack.Grabbler:
@@ -256,6 +257,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsFerrisGrabble", false);
             animator.SetBool("IsFerrisGrabbed", false);
             animator.SetBool("IsScooter", false);
+            animator.SetBool("IsDodgeGrabbed", false);
         }
     }
     
