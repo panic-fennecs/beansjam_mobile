@@ -117,6 +117,24 @@ public class GameManagerScript : MonoBehaviour
                 }
                 break;
             case Attack.HitTheLukas:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        animators[0].SetBool("IsHittingLukasBasic", true);
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 break;
             case Attack.AutoScooter:
                 break;
@@ -132,8 +150,8 @@ public class GameManagerScript : MonoBehaviour
         foreach (var animator in animators)
         {
             animator.SetBool("IsShooting", false);
+            animator.SetBool("IsHittingLukasBasic", false);
         }
-        
     }
     
     public void PlayerAttackChoice(int player_id, Attack attack)
