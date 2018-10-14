@@ -75,8 +75,6 @@ public class GameManagerScript : MonoBehaviour
             case Attack.Unselected:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
-                        break;
                     case Attack.FerrisWheel:
                         break;
                     case Attack.AirGun:
@@ -84,10 +82,15 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsShooting", true);
                         break;
                     case Attack.HitTheLukas:
+                        // Ken getroffen werden
+                        // RikkeHammer werfen
                         break;
                     case Attack.AutoScooter:
+                        // Ken getroffen werden
+                        // Rikke fährt um
                         break;
                     case Attack.Grabbler:
+                        // GrabblerAttack
                         animators[0].SetBool("IsGrabbled", true);
                         break;
                     default:
@@ -99,18 +102,25 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
+                        animators[0].SetBool("IsFerrisAttack", true);
+                        // Rikke getroffen werden
                         break;
                     case Attack.FerrisWheel:
                         animators[0].SetBool("IsFerrisWheelBasic", true);
                         animators[1].SetBool("IsFerrisWheelBasic", true);
                         break;
                     case Attack.AirGun:
+                        // Ken Ferris Wheel getroffen werden
+                        // AirGun schießt ab
                         break;
                     case Attack.HitTheLukas:
+                        animators[0].SetBool("IsFerrisAttack", true);
                         break;
                     case Attack.AutoScooter:
+                        // Ken chillt
                         break;
                     case Attack.Grabbler:
+                        // 
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -124,12 +134,16 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsShot", true);
                         break;
                     case Attack.FerrisWheel:
+                        // abschießen
                         break;
                     case Attack.AirGun:
+                        // Beide schießen sich ab
                         break;
                     case Attack.HitTheLukas:
+                        // Hammer werfen
                         break;
                     case Attack.AutoScooter:
+                        // 
                         break;
                     case Attack.Grabbler:
                         break;
@@ -200,6 +214,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsScooterCrash", false);
             animator.SetBool("IsScooterCrash2", false);
             animator.SetBool("IsGrabbled", false);
+            animator.SetBool("IsFerrisAttack", false);
         }
     }
     
