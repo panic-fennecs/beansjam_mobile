@@ -60,7 +60,7 @@ public class PlayerScript : MonoBehaviour
 	}
 
 	Vector3 GetHealthMarkPositionViewport(int i) {
-		float size = Factor() * GameManagerScript.Instance.HealthPrefab.transform.lossyScale.x;
+		float size = Factor() * GameManagerScript.Instance.HealthPrefab.transform.lossyScale.x * 2;
 
 		float x = 0.5f - (size + i * 3.0f*size/2.0f);
 		float y = 1.0f - (3.0f * size / 2.0f);
