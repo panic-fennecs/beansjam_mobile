@@ -51,6 +51,7 @@ public class GameManagerScript : MonoBehaviour
         ShowText.text = "Fair";
         yield return new WaitForSeconds(0.5f);
         ShowText.text = "Fight";
+		HideButtons();
         Fight();
         yield return new WaitForSeconds(0.5f);
         ShowText.text = "";
@@ -149,8 +150,21 @@ public class GameManagerScript : MonoBehaviour
         {
             round_running = true;
             ResetPlayerChoices();
+			ShowButtons();
             
             StartCoroutine("StartRound");
         }
     }
+
+	void ShowButtons() {
+		for (int i = 0; i < 2; i++) {
+			Players[i].GetComponent<PlayerScript>().ShowButtons();
+		}
+	}
+
+	void HideButtons() {
+		for (int i = 0; i < 2; i++) {
+			Players[i].GetComponent<PlayerScript>().HideButtons();
+		}
+	}
 }

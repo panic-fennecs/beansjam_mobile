@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject ButtonPrefab;
     public int PlayerID;
-    private Sprite[] Buttons;
+    private GameObject[] Buttons;
     private GameObject[] HealthMarks = new GameObject[MAX_HEALTH];
 	private int Health = MAX_HEALTH;
 
@@ -29,14 +29,14 @@ public class PlayerScript : MonoBehaviour
 			HealthMarks[i] = Instantiate(GameManagerScript.Instance.HealthPrefab, GetHealthMarkPosition(i), Quaternion.identity);
 		}
 
-        Buttons = new Sprite[attacks.Length];
+        Buttons = new GameObject[attacks.Length];
         
         for (int i = 0; i < attacks.Length; i++)
         {
             GameObject btn = Instantiate(ButtonPrefab, GetAttackButtonPosition(i), Quaternion.identity);
             btn.GetComponent<AttackButtonScript>().PlayerID = PlayerID;
             btn.GetComponent<AttackButtonScript>().attack = attacks[i];
-            Buttons[i] = btn.GetComponent<Sprite>();
+            Buttons[i] = btn;
         }
     }
 
@@ -92,5 +92,17 @@ public class PlayerScript : MonoBehaviour
 		var v = Camera.main.ViewportToWorldPoint(GetAttackButtonPositionViewport(i));
 		v.z = 0;
 		return v;
+	}
+
+	public void ShowButtons() {
+		for (int i = 0; i < NUM_BUTTONS; i++) {
+			Buttons[i].GetComponent<AttackButtonScript>().Show();
+		}
+	}
+
+	public void HideButtons() {
+		for (int i = 0; i < NUM_BUTTONS; i++) {
+			Buttons[i].GetComponent<AttackButtonScript>().Hide();
+		}
 	}
 }

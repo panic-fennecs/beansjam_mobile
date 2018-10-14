@@ -89,4 +89,12 @@ public class AttackButtonScript : MonoBehaviour
         Vector2 world_touch = Camera.main.ScreenToWorldPoint(touch_pos);
         return gameObject.GetComponent<BoxCollider2D>().OverlapPoint(world_touch);
     }
+
+	public void Show() {
+		GetComponent<SpriteRenderer>().enabled = true;
+	}
+
+	public void Hide() {
+		GetComponent<SpriteRenderer>().enabled = false;
+	}
 }
