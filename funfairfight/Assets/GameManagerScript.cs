@@ -103,7 +103,7 @@ public class GameManagerScript : MonoBehaviour
                 {
                     case Attack.Unselected:
                         animators[0].SetBool("IsFerrisAttack", true);
-                        // Rikke getroffen werden
+                        animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
                         animators[0].SetBool("IsFerrisWheelBasic", true);
@@ -153,6 +153,7 @@ public class GameManagerScript : MonoBehaviour
                 {
                     case Attack.Unselected:
                         animators[0].SetBool("IsHammerAttack", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
                         animators[1].SetBool("IsFerrisAttack", true);
@@ -176,6 +177,7 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
+                        animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
                         animators[0].SetBool("IsScooterCrash", true);
@@ -197,6 +199,7 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
+                        animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
                         break;
