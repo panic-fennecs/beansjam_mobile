@@ -36,7 +36,9 @@ public class EndScreenManagerScript : MonoBehaviour
         if (elapsedTime > (prevAnimChangeTime + 0.4f + (isShooting ? 0.0f : 0.2f))) {
             prevAnimChangeTime = elapsedTime;
             isShooting = !isShooting;
-            animator.SetBool("IsShooting", isShooting);
+			if (animator != null) {
+            	animator.SetBool("IsShooting", isShooting);
+			}
         }
     }
 }
