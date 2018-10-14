@@ -50,7 +50,7 @@ public class AudioControllerScript : MonoBehaviour
         gfxAirGun.Play();
     }
 
-    void playGfxBlood()
+    public void playGfxBlood()
     {
         switch (random.Next(0, 3)) {
             case 0: gfxBlood0.Play(); break;
@@ -60,13 +60,34 @@ public class AudioControllerScript : MonoBehaviour
         }
     }
 
-    void playGfxExplosion()
+    public void playGfxExplosion()
     {
         switch (random.Next(0, 3)) {
             case 0: gfxExplosion0.Play(); break;
             case 1: gfxExplosion1.Play(); break;
             case 2: gfxExplosion2.Play(); break;
             case 3: gfxExplosion3.Play(); break;
+        }
+    }
+
+    public void playSoundByAttack(Attack attack)
+    {
+        switch(attack) {
+            case Attack.FerrisWheel:
+                playGfxFerisWheel();
+                break;
+            case Attack.AirGun:
+                playGfxAirGun();
+                break;
+            case Attack.HitTheLukas:
+                playGfxHitTheLukas();
+                break;
+            case Attack.AutoScooter:
+                playGfxScooter();
+                break;
+            case Attack.Grabbler:
+                playGfxGrabbler();
+                break;
         }
     }
 }
