@@ -178,6 +178,7 @@ public class GameManagerScript : MonoBehaviour
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
+                        animators[0].SetBool("IsScooter", true);
                         animators[1].SetBool("IsHit", true);
                         break;
                     case Attack.FerrisWheel:
@@ -185,10 +186,13 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsFerrisWheelBasic", true);
                         break;
                     case Attack.AirGun:
+                        animators[0].SetBool("IsScooter", true);
                         break;
                     case Attack.HitTheLukas:
+                        animators[0].SetBool("IsScooter", true);
                         break;
                     case Attack.AutoScooter:
+                        animators[0].SetBool("IsScooterCrash2", true);
                         break;
                     case Attack.Grabbler:
                         animators[0].SetBool("IsScooterCrash2", true);
@@ -228,6 +232,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsHittingLukasBasic", false);
             animator.SetBool("IsFerrisWheelBasic", false);
+            animator.SetBool("IsScooter", false);
             animator.SetBool("IsScooterCrash", false);
             animator.SetBool("IsScooterCrash2", false);
             animator.SetBool("IsGrabbled", false);
