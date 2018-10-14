@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rikke_idle
+  m_Name: Rikke_hit
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,12 +19,12 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0.5833333
-      value: {fileID: 21300000, guid: 17c5298f79737359aa6126ab43285908, type: 3}
-    - time: 0.9166667
-      value: {fileID: 21300000, guid: 3873e8aeace2926c3a5a65c6f3e0ef04, type: 3}
-    - time: 1.25
-      value: {fileID: 21300000, guid: 3873e8aeace2926c3a5a65c6f3e0ef04, type: 3}
+    - time: 0
+      value: {fileID: 21300000, guid: ec2e62ab060b2ab0ba6e8a3e4d3ac4e7, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: 14e01f3ffe18ecde38db5f94ae5ecb25, type: 3}
+    - time: 0.8333333
+      value: {fileID: 21300000, guid: afa644924c75c10b1a9f5e452a5d3c1e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,20 +44,20 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 17c5298f79737359aa6126ab43285908, type: 3}
-    - {fileID: 21300000, guid: 3873e8aeace2926c3a5a65c6f3e0ef04, type: 3}
-    - {fileID: 21300000, guid: 3873e8aeace2926c3a5a65c6f3e0ef04, type: 3}
+    - {fileID: 21300000, guid: ec2e62ab060b2ab0ba6e8a3e4d3ac4e7, type: 3}
+    - {fileID: 21300000, guid: 14e01f3ffe18ecde38db5f94ae5ecb25, type: 3}
+    - {fileID: 21300000, guid: afa644924c75c10b1a9f5e452a5d3c1e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.3333334
+    m_StopTime: 0.9166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
