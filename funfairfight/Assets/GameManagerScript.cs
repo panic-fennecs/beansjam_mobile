@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading;
 
 public enum Attack
 {
@@ -27,6 +26,7 @@ public class GameManagerScript : MonoBehaviour
 	public GameObject HealthPrefab;
 
     public GameObject[] Players;
+    private Animator[] animators;
     public Text ShowText;
 
     private Attack[] player_choices;
@@ -36,9 +36,9 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Instance == null) {
             Instance = this;
-        }
+        }        
     }
-
+    
     // Shows the Countdown
     IEnumerator StartRound()
     {
@@ -51,19 +51,84 @@ public class GameManagerScript : MonoBehaviour
         ShowText.text = "Fair";
         yield return new WaitForSeconds(0.5f);
         ShowText.text = "Fight";
+        PlayAnimation();
+        yield return new WaitForSeconds(1.0f);
         Fight();
+        ResetAllAnimations();
         yield return new WaitForSeconds(0.5f);
         ShowText.text = "";
-        PlayAnimation();
         yield return new WaitForSeconds(2.0f);
         round_running = false;
     }
 
     void PlayAnimation()
     {
-        // TODO
+        switch (player_choices[0])
+        {
+            case Attack.Unselected:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        break;
+                    case Attack.AirGun:
+                        animators[1].SetBool("IsShooting", true);
+                        break;
+                    case Attack.HitTheLukas:
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                break;
+            case Attack.FerrisWheel:
+                break;
+            case Attack.AirGun:
+                animators[0].SetBool("IsShooting", true);
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        
+                        break;
+                    case Attack.FerrisWheel:
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                break;
+            case Attack.HitTheLukas:
+                break;
+            case Attack.AutoScooter:
+                break;
+            case Attack.Grabbler:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
+    void ResetAllAnimations()
+    {
+        foreach (var animator in animators)
+        {
+            animator.SetBool("IsShooting", false);
+        }
+        
+    }
+    
     public void PlayerAttackChoice(int player_id, Attack attack)
     {
         if (player_id >= 0 && player_id < 2)
@@ -135,6 +200,7 @@ public class GameManagerScript : MonoBehaviour
     {
         ResetPlayerChoices();
         round_running = false;
+        animators = new[] {Players[0].GetComponent<Animator>(), Players[1].GetComponent<Animator>()};
     }
 
     void ResetPlayerChoices()
