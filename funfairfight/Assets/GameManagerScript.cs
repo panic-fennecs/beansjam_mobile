@@ -33,6 +33,7 @@ public class GameManagerScript : MonoBehaviour
 
     public Attack[] player_choices;
     private bool round_running;
+    private bool game_running;
 
     void Awake()
     {
@@ -65,9 +66,11 @@ public class GameManagerScript : MonoBehaviour
         Fight();
         ResetAllAnimations();
         yield return new WaitForSeconds(0.5f);
+
+        CheckWinConditions();
         round_running = false;
     }
-
+    
     void PlayAnimation()
     {
         switch (player_choices[0])
@@ -75,22 +78,23 @@ public class GameManagerScript : MonoBehaviour
             case Attack.Unselected:
                 switch (player_choices[1])
                 {
-                    case Attack.FerrisWheel:
+                    case Attack.FerrisWheel: // worked
+                        animators[0].SetBool("IsHit", true);
                         animators[1].SetBool("IsFerrisAttack", true);
                         break;
-                    case Attack.AirGun:
+                    case Attack.AirGun: // worked
                         animators[0].SetBool("IsShot", true);
                         animators[1].SetBool("IsShooting", true);
                         break;
-                    case Attack.HitTheLukas:
+                    case Attack.HitTheLukas: // worked
                         animators[0].SetBool("IsShot", true);
                         animators[1].SetBool("IsHammerAttack", true);
                         break;
-                    case Attack.AutoScooter:
-                        // Ken getroffen werden
-                        // Rikke fährt um
+                    case Attack.AutoScooter: // worked
+                        animators[0].SetBool("IsHit", true);
+                        animators[1].SetBool("IsScooter", true);
                         break;
-                    case Attack.Grabbler:
+                    case Attack.Grabbler: // TODO: maxi macht zeug
                         // GrabblerAttack
                         animators[0].SetBool("IsGrabbled", true);
                         break;
@@ -100,91 +104,110 @@ public class GameManagerScript : MonoBehaviour
             case Attack.FerrisWheel:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
+                    case Attack.Unselected: // worked
                         animators[0].SetBool("IsFerrisAttack", true);
-                        // Rikke getroffen werden
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.FerrisWheel:
+                    case Attack.FerrisWheel: // worked
                         animators[0].SetBool("IsFerrisWheelBasic", true);
                         animators[1].SetBool("IsFerrisWheelBasic", true);
                         break;
-                    case Attack.AirGun:
-                        // Ken Ferris Wheel getroffen werden
-                        // AirGun schießt ab
+                    case Attack.AirGun: // worked
+                        animators[0].SetBool("IsFerrisShot", true);
+                        animators[1].SetBool("IsShooting", true);
                         break;
-                    case Attack.HitTheLukas:
-                        animators[1].SetBool("IsFerrisAttack", true);
+                    case Attack.HitTheLukas: // TODO: geht nicht
+                        animators[0].SetBool("IsFerrisAttack", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.AutoScooter:
-                        // Ken chillt
+                    case Attack.AutoScooter: // worked
+                        animators[0].SetBool("IsFerrisWheelBasic", true);
+                        animators[1].SetBool("IsScooterCrash", true);
                         break;
-                    case Attack.Grabbler:
-                        // 
+                    case Attack.Grabbler: // TODO: noch machen
+                        animators[0].SetBool("IsFerrisGrabbed", true);
                         break;
                 }
                 break;
             case Attack.AirGun:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
+                    case Attack.Unselected: // worked
                         animators[0].SetBool("IsShooting", true);
                         animators[1].SetBool("IsShot", true);
                         break;
-                    case Attack.FerrisWheel:
-                        // abschießen
+                    case Attack.FerrisWheel: // worked
+                        animators[0].SetBool("IsShooting", true);
+                        animators[1].SetBool("IsFerrisShot", true);
                         break;
-                    case Attack.AirGun:
+                    case Attack.AirGun: // TODO: noch machen
                         // Beide schießen sich ab
                         break;
-                    case Attack.HitTheLukas:
+                    case Attack.HitTheLukas: // TODO: worked (naja)
+                        animators[0].SetBool("IsShot", true);
                         animators[1].SetBool("IsHammerAttack", true);
                         break;
-                    case Attack.AutoScooter:
-                        // 
+                    case Attack.AutoScooter: // TODO: airgun ziehen
+                        animators[0].SetBool("IsHit", true);
+                        animators[1].SetBool("IsScooter", true);
                         break;
-                    case Attack.Grabbler:
+                    case Attack.Grabbler: // TODO: fehlt
                         break;
                 }
                 break;
             case Attack.HitTheLukas:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
+                    case Attack.Unselected: // TODO: worked (naja)
                         animators[0].SetBool("IsHammerAttack", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.FerrisWheel:
+                    case Attack.FerrisWheel: // TODO: worked (naja)
+                        animators[0].SetBool("IsHit", true);
                         animators[1].SetBool("IsFerrisAttack", true);
                         break;
-                    case Attack.AirGun:
+                    case Attack.AirGun: // TODO: testen
                         animators[0].SetBool("IsHammerAttack", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.HitTheLukas:
+                    case Attack.HitTheLukas: // worked
                         animators[0].SetBool("IsHittingLukasBasic", true);
                         animators[1].SetBool("IsHittingLukasBasic", true);
                         break;
-                    case Attack.AutoScooter:
+                    case Attack.AutoScooter: // TODO: Hammer?
+                        animators[0].SetBool("IsHit", true);
+                        animators[1].SetBool("IsScooter", true);
                         break;
-                    case Attack.Grabbler:
+                    case Attack.Grabbler: // TODO: Hit nachgepatched
                         animators[0].SetBool("IsHammerAttack", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
                 }
                 break;
             case Attack.AutoScooter:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
+                    case Attack.Unselected: // worked
+                        animators[0].SetBool("IsScooter", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.FerrisWheel:
+                    case Attack.FerrisWheel: // worked
                         animators[0].SetBool("IsScooterCrash", true);
                         animators[1].SetBool("IsFerrisWheelBasic", true);
                         break;
-                    case Attack.AirGun:
+                    case Attack.AirGun: // TODO: Gewehr fehlt
+                        animators[0].SetBool("IsScooter", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.HitTheLukas:
+                    case Attack.HitTheLukas: // TODO: Hammer?
+                        animators[0].SetBool("IsScooter", true);
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.AutoScooter:
+                    case Attack.AutoScooter: // TODO: nachpatchen
+                        animators[0].SetBool("IsScooterCrash2", true);
+                        animators[1].SetBool("IsScooterCrash2", true);
                         break;
-                    case Attack.Grabbler:
+                    case Attack.Grabbler: // worked
                         animators[0].SetBool("IsScooterCrash2", true);
                         animators[1].SetBool("IsGrabbled", true);
                         break;
@@ -193,16 +216,20 @@ public class GameManagerScript : MonoBehaviour
             case Attack.Grabbler:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected:
+                    case Attack.Unselected: // TODO: maxi macht gerade
+                        animators[1].SetBool("IsHit", true);
                         break;
-                    case Attack.FerrisWheel:
+                    case Attack.FerrisWheel: // worked
+                        animators[1].SetBool("IsFerrisGrabble", true);
                         break;
-                    case Attack.AirGun:
+                    case Attack.AirGun: // TODO: animation?
                         break;
-                    case Attack.HitTheLukas:
+                    case Attack.HitTheLukas: 
+                        animators[0].SetBool("IsHit", true);
                         animators[1].SetBool("IsHammerAttack", true);
                         break;
-                    case Attack.AutoScooter:
+                    case Attack.AutoScooter: // TODO: Dodgen
+                        animators[1].SetBool("IsScooterCrash", true);
                         break;
                     case Attack.Grabbler:
                         break;
@@ -220,11 +247,17 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsHittingLukasBasic", false);
             animator.SetBool("IsFerrisWheelBasic", false);
+            animator.SetBool("IsScooter", false);
             animator.SetBool("IsScooterCrash", false);
             animator.SetBool("IsScooterCrash2", false);
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsFerrisAttack", false);
             animator.SetBool("IsHammerAttack", false);
+            animator.SetBool("IsHit", false);
+            animator.SetBool("IsFerrisShot", false);
+            animator.SetBool("IsFerrisGrabble", false);
+            animator.SetBool("IsFerrisGrabbed", false);
+            animator.SetBool("IsScooter", false);
         }
     }
     
@@ -297,6 +330,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        game_running = true;
         ResetPlayerChoices();
         round_running = false;
         animators = new[] {Players[0].GetComponent<Animator>(), Players[1].GetComponent<Animator>()};
@@ -310,13 +344,15 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!round_running)
-        {
-            round_running = true;
-            ResetPlayerChoices();
-			ShowButtons();
-            
-            StartCoroutine("StartRound");
+        if (game_running) {
+            if (!round_running)
+            {
+                round_running = true;
+                ResetPlayerChoices();
+                ShowButtons();
+                
+                StartCoroutine("StartRound");
+            }
         }
     }
 
@@ -331,4 +367,15 @@ public class GameManagerScript : MonoBehaviour
 			Players[i].GetComponent<PlayerScript>().HideButtons();
 		}
 	}
+
+    void CheckWinConditions()
+    {
+        for (int i = 0; i < Players.Length; i++) {
+            if (Players[i].GetComponent<PlayerScript>().GetHealth() == 0) {
+                game_running = false;
+                GlobalScript.LoadScene("EndScreen", i);
+                return;
+            }
+        }
+    }
 }
