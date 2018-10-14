@@ -132,6 +132,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.FerrisWheel:
                         animators[0].SetBool("IsShooting", true);
+                        animators[1].SetBool("IsFerrisShot", true);
                         break;
                     case Attack.AirGun:
                         // Beide schießen sich ab
@@ -230,6 +231,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsFerrisAttack", false);
             animator.SetBool("IsHammerAttack", false);
             animator.SetBool("IsHit", false);
+            animator.SetBool("IsFerrisShot", false);
         }
     }
     
