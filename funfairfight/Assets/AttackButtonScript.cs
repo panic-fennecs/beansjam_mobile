@@ -13,6 +13,15 @@ public class AttackButtonScript : MonoBehaviour
 
     void Update()
     {
+		if (Input.mousePresent) {
+			if (Input.GetMouseButtonDown(0) && Collides(Input.mousePosition)) {
+				AppearPressed();
+				OnPress();
+			} else {
+				AppearReleased();
+			}
+		}
+
         for (int i = 0; i < Input.touchCount; i++) {
             Touch t = Input.GetTouch(i);
 
@@ -22,7 +31,7 @@ public class AttackButtonScript : MonoBehaviour
             bool collides_past = Collides(position_past);
             bool collides_present = Collides(position_present);
 
-            if (t.phase == TouchPhase.Began) {
+            if (t.phase == TouchPhase.Began) { 
                 if (collides_present) {
                     AppearPressed();
                     OnPress();
