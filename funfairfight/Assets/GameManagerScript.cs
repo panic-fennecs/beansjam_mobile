@@ -80,6 +80,7 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.FerrisWheel:
                         break;
                     case Attack.AirGun:
+                        animators[0].SetBool("IsShot", true);
                         animators[1].SetBool("IsShooting", true);
                         break;
                     case Attack.HitTheLukas:
@@ -97,11 +98,11 @@ public class GameManagerScript : MonoBehaviour
             case Attack.FerrisWheel:
                 break;
             case Attack.AirGun:
-                animators[0].SetBool("IsShooting", true);
                 switch (player_choices[1])
                 {
                     case Attack.Unselected:
-                        
+                        animators[0].SetBool("IsShooting", true);
+                        animators[1].SetBool("IsShot", true);
                         break;
                     case Attack.FerrisWheel:
                         break;
@@ -133,6 +134,7 @@ public class GameManagerScript : MonoBehaviour
         foreach (var animator in animators)
         {
             animator.SetBool("IsShooting", false);
+            animator.SetBool("IsShot", false);
             animator.SetBool("IsGrabbled", false);
         }
         
