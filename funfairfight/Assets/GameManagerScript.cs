@@ -24,10 +24,12 @@ public class GameManagerScript : MonoBehaviour
     public Sprite PressedAutoScooter, ReleasedAutoScooter;
     public Sprite PressedGrabbler, ReleasedGrabbler;
 
+    public Sprite[] CountdownSprites;
+    public GameObject CountdownShowSprite;
+
 	public GameObject HealthPrefab;
 
     public GameObject[] Players;
-    public Text ShowText;
 
     private Attack[] player_choices;
     private bool round_running;
@@ -42,18 +44,20 @@ public class GameManagerScript : MonoBehaviour
     // Shows the Countdown
     IEnumerator StartRound()
     {
-        ShowText.text = "5";
+        SpriteRenderer r = CountdownShowSprite.GetComponent<SpriteRenderer>();
+        r.sprite = CountdownSprites[0];
+        r.enabled = true;
         yield return new WaitForSeconds(1.0f);
-        ShowText.text = "4";
+        r.sprite = CountdownSprites[1];
         yield return new WaitForSeconds(1.0f);
-        ShowText.text = "Fun";
+        r.sprite = CountdownSprites[2];
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "Fair";
+        r.sprite = CountdownSprites[3];
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "Fight";
+        r.sprite = CountdownSprites[4];
         Fight();
         yield return new WaitForSeconds(0.5f);
-        ShowText.text = "";
+        r.enabled = false;
         PlayAnimation();
         yield return new WaitForSeconds(2.0f);
         round_running = false;
