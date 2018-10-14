@@ -225,8 +225,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsFerrisGrabble", true);
                         break;
                     case Attack.AirGun: // TODO: animation?
-                        animators[0].SetBool("IsShooting", true);
-                        animators[1].SetBool("IsShot", true);
+                        animators[0].SetBool("IsShot", true);
+                        animators[1].SetBool("IsShooting", true);
                         break;
                     case Attack.HitTheLukas: 
                         animators[0].SetBool("IsHit", true);
