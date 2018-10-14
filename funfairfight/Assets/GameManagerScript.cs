@@ -94,8 +94,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsHit", true);
                         animators[1].SetBool("IsScooter", true);
                         break;
-                    case Attack.Grabbler:
-                        animators[0].SetBool("IsIdleGrabble", true);
+                    case Attack.Grabbler: // worked
+                        animators[0].SetBool("IsIdleGrabbed", true);
                         break;
                 }
 
@@ -260,6 +260,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsScooter", false);
             animator.SetBool("IsShootDraw", false);
             animator.SetBool("IsDodgeGrabbed", false);
+            animator.SetBool("IsIdleGrabbed", false);
         }
     }
     
