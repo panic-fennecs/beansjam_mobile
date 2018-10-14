@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class EndScreenManagerScript : MonoBehaviour
 {
-    public int winner;
     public GameObject[] Players;
-    private Animator[] animators;
+    private Animator animator;
     private bool isShooting;
     private float elapsedTime;
     private float prevAnimChangeTime;
@@ -15,8 +14,12 @@ public class EndScreenManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Players[1 - GlobalScript.winner].SetActive(false);
+        Players[GlobalScript.winner].GetComponent<PlayerScript>().HideButtons();
+        Players[GlobalScript.winner].GetComponent<PlayerScript>().HideHealthMarks();
+
         isShooting = false;
-        animators = new[] {Players[0].GetComponent<Animator>(), Players[1].GetComponent<Animator>()};
+        animator = Players[GlobalScript.winner].GetComponent<Animator>();
 
         elapsedTime = 0;
         prevAnimChangeTime = 0;
@@ -30,7 +33,7 @@ public class EndScreenManagerScript : MonoBehaviour
         if (elapsedTime > (prevAnimChangeTime + 0.4f + (isShooting ? 0.0f : 0.2f))) {
             prevAnimChangeTime = elapsedTime;
             isShooting = !isShooting;
-            animators[winner].SetBool("IsShooting", isShooting);
+            animator.SetBool("IsShooting", isShooting);
         }
     }
 }
