@@ -290,12 +290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &433283596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8216382465017777543, guid: 62739d420b68e0454a1b793c7e9099c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1205854768}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,12 +662,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1633397453 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8216382465017777543, guid: 62739d420b68e0454a1b793c7e9099c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1070389748}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1885291079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,8 +2208,8 @@ MonoBehaviour:
   HealthPrefab: {fileID: 7498593767180686595, guid: 864a407391328dc23858ab43cabb1ab5,
     type: 3}
   Players:
-  - {fileID: 433283596}
-  - {fileID: 1633397453}
+  - {fileID: 1506668824}
+  - {fileID: 1929617359}
   ShowText: {fileID: 267182798}
 --- !u!4 &1965961634
 Transform:
