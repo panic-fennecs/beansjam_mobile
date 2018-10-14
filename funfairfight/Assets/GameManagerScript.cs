@@ -89,7 +89,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.AutoScooter:
                         animators[0].SetBool("IsHit", true);
-                        // Rikke fährt um
+                        animators[1].SetBool("IsScooter", true);
                         break;
                     case Attack.Grabbler:
                         // GrabblerAttack
@@ -118,6 +118,8 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.AutoScooter:
                         animators[0].SetBool("IsFerrisWheelBasic", true);
+                        animators[1].SetBool("IsScooterCrash", true);
+
                         break;
                     case Attack.Grabbler:
                         // 
@@ -144,6 +146,7 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.AutoScooter:
                         animators[0].SetBool("IsHit", true);
+                        animators[1].SetBool("IsScooter", true);
                         break;
                     case Attack.Grabbler:
                         break;
@@ -168,6 +171,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsHittingLukasBasic", true);
                         break;
                     case Attack.AutoScooter:
+                        animators[1].SetBool("IsScooter", true);
                         break;
                     case Attack.Grabbler:
                         animators[0].SetBool("IsHammerAttack", true);
@@ -211,6 +215,7 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsHammerAttack", true);
                         break;
                     case Attack.AutoScooter:
+                        animators[1].SetBool("IsScooterCrash", true);
                         break;
                     case Attack.Grabbler:
                         break;
@@ -236,6 +241,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsHit", false);
             animator.SetBool("IsFerrisShot", false);
             animator.SetBool("IsFerrisGrabble", false);
+            animator.SetBool("IsScooter", false);
         }
     }
     
