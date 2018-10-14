@@ -96,6 +96,25 @@ public class GameManagerScript : MonoBehaviour
 
                 break;
             case Attack.FerrisWheel:
+                switch (player_choices[1])
+                {
+                    case Attack.Unselected:
+                        break;
+                    case Attack.FerrisWheel:
+                        animators[0].SetBool("IsFerrisWheelBasic", true);
+                        animators[1].SetBool("IsFerrisWheelBasic", true);
+                        break;
+                    case Attack.AirGun:
+                        break;
+                    case Attack.HitTheLukas:
+                        break;
+                    case Attack.AutoScooter:
+                        break;
+                    case Attack.Grabbler:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 break;
             case Attack.AirGun:
                 switch (player_choices[1])
@@ -155,6 +174,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsShot", false);
             animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsHittingLukasBasic", false);
+            animator.SetBool("IsFerrisWheelBasic", false);
         }
     }
     
