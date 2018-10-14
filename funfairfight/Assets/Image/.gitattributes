@@ -1,1 +1,6 @@
 backgroundFunFair.png filter=lfs diff=lfs merge=lfs -text
+Countdown/countdown0.png filter=lfs diff=lfs merge=lfs -text
+Countdown/countdown1.png filter=lfs diff=lfs merge=lfs -text
+Countdown/countdown2.png filter=lfs diff=lfs merge=lfs -text
+Countdown/countdown3.png filter=lfs diff=lfs merge=lfs -text
+Countdown/countdown4.png filter=lfs diff=lfs merge=lfs -text
