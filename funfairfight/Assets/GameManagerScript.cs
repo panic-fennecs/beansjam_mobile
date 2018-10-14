@@ -94,9 +94,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsHit", true);
                         animators[1].SetBool("IsScooter", true);
                         break;
-                    case Attack.Grabbler: // TODO: maxi macht zeug
-                        // GrabblerAttack
-                        animators[0].SetBool("IsGrabbled", true);
+                    case Attack.Grabbler:
+                        animators[0].SetBool("IsIdleGrabble", true);
                         break;
                 }
 
@@ -216,8 +215,8 @@ public class GameManagerScript : MonoBehaviour
             case Attack.Grabbler:
                 switch (player_choices[1])
                 {
-                    case Attack.Unselected: // TODO: maxi macht gerade
-                        animators[1].SetBool("IsHit", true);
+                    case Attack.Unselected:
+                        animators[1].SetBool("IsIdleGrabble", true);
                         break;
                     case Attack.FerrisWheel: // worked
                         animators[1].SetBool("IsFerrisGrabble", true);
@@ -250,7 +249,6 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsScooter", false);
             animator.SetBool("IsScooterCrash", false);
             animator.SetBool("IsScooterCrash2", false);
-            animator.SetBool("IsGrabbled", false);
             animator.SetBool("IsFerrisAttack", false);
             animator.SetBool("IsHammerAttack", false);
             animator.SetBool("IsHit", false);
