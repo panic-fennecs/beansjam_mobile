@@ -45,6 +45,8 @@ public class GameManagerScript : MonoBehaviour
     IEnumerator StartRound()
     {
         SpriteRenderer r = CountdownShowSprite.GetComponent<SpriteRenderer>();
+        Debug.Log(r.size);
+        r.size = new Vector2(2.0f, 2.0f);
         r.sprite = CountdownSprites[0];
         r.enabled = true;
         yield return new WaitForSeconds(1.0f);
