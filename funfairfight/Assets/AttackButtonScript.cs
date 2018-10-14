@@ -5,6 +5,7 @@ public class AttackButtonScript : MonoBehaviour
 {
     public int PlayerID;
     public Attack attack;
+	private bool visible = true;
 
     void Start()
     {
@@ -13,32 +14,34 @@ public class AttackButtonScript : MonoBehaviour
 
     void Update()
     {
-		if (Input.mousePresent) {
-			if (Input.GetMouseButtonDown(0) && Collides(Input.mousePosition)) {
-				OnPress();
+		if (visible) {
+			if (Input.mousePresent) {
+				if (Input.GetMouseButtonDown(0) && Collides(Input.mousePosition)) {
+					OnPress();
+				}
 			}
-		}
 
-        for (int i = 0; i < Input.touchCount; i++) {
-            Touch t = Input.GetTouch(i);
+			for (int i = 0; i < Input.touchCount; i++) {
+				Touch t = Input.GetTouch(i);
 
-            Vector2 position_past = t.position - t.deltaPosition;
-            Vector2 position_present = t.position;
+				Vector2 position_past = t.position - t.deltaPosition;
+				Vector2 position_present = t.position;
 
-            bool collides_past = Collides(position_past);
-            bool collides_present = Collides(position_present);
+				bool collides_past = Collides(position_past);
+				bool collides_present = Collides(position_present);
 
-            if (t.phase == TouchPhase.Began) { 
-                if (collides_present) {
-                    OnPress();
-                }
-            }
-        }
+				if (t.phase == TouchPhase.Began) { 
+					if (collides_present) {
+						OnPress();
+					}
+				}
+			}
 
-		if (attack == GameManagerScript.Instance.player_choices[PlayerID]) {
-			AppearPressed();
-		} else {
-			AppearReleased();
+			if (attack == GameManagerScript.Instance.player_choices[PlayerID]) {
+				AppearPressed();
+			} else {
+				AppearReleased();
+			}
 		}
     }
 
@@ -83,10 +86,16 @@ public class AttackButtonScript : MonoBehaviour
     }
 
 	public void Show() {
-		GetComponent<SpriteRenderer>().enabled = true;
+		if (!visible) {
+			GetComponent<SpriteRenderer>().enabled = true;
+			visible = true;
+		}
 	}
 
 	public void Hide() {
-		GetComponent<SpriteRenderer>().enabled = false;
+		if (visible) {
+			GetComponent<SpriteRenderer>().enabled = false;
+			visible = false;
+		}
 	}
 }
