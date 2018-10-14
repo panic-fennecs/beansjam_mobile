@@ -93,8 +93,6 @@ public class GameManagerScript : MonoBehaviour
                         // GrabblerAttack
                         animators[0].SetBool("IsGrabbled", true);
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
 
                 break;
@@ -122,8 +120,6 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.Grabbler:
                         // 
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
                 break;
             case Attack.AirGun:
@@ -147,8 +143,6 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.Grabbler:
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
                 break;
             case Attack.HitTheLukas:
@@ -167,8 +161,6 @@ public class GameManagerScript : MonoBehaviour
                         break;
                     case Attack.Grabbler:
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
                 break;
             case Attack.AutoScooter:
@@ -191,14 +183,10 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsScooterCrash2", true);
                         animators[1].SetBool("IsGrabbled", true);
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
                 break;
             case Attack.Grabbler:
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 
