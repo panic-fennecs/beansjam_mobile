@@ -85,6 +85,7 @@ public class GameManagerScript : MonoBehaviour
                     case Attack.AutoScooter:
                         break;
                     case Attack.Grabbler:
+                        animators[0].SetBool("IsGrabbled", true);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -130,6 +131,7 @@ public class GameManagerScript : MonoBehaviour
         foreach (var animator in animators)
         {
             animator.SetBool("IsShooting", false);
+            animator.SetBool("IsGrabbled", false);
         }
         
     }
