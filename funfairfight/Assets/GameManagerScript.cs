@@ -139,8 +139,9 @@ public class GameManagerScript : MonoBehaviour
                         animators[0].SetBool("IsShooting", true);
                         animators[1].SetBool("IsFerrisShot", true);
                         break;
-                    case Attack.AirGun: // TODO: noch machen
-                        // Beide schießen sich ab
+                    case Attack.AirGun:
+                        animators[0].SetBool("IsShootDraw", true);
+                        animators[1].SetBool("IsShootDraw", true);
                         break;
                     case Attack.HitTheLukas: // TODO: worked (naja)
                         animators[0].SetBool("IsShot", true);
@@ -257,6 +258,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsFerrisGrabble", false);
             animator.SetBool("IsFerrisGrabbed", false);
             animator.SetBool("IsScooter", false);
+            animator.SetBool("IsShootDraw", false);
             animator.SetBool("IsDodgeGrabbed", false);
         }
     }
