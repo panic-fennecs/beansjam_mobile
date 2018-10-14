@@ -110,8 +110,8 @@ public class GameManagerScript : MonoBehaviour
                         animators[1].SetBool("IsFerrisWheelBasic", true);
                         break;
                     case Attack.AirGun:
-                        // Ken Ferris Wheel getroffen werden
-                        // AirGun schießt ab
+                        animators[0].SetBool("IsFerrisShot", true);
+                        animators[1].SetBool("IsShooting", true);
                         break;
                     case Attack.HitTheLukas:
                         animators[1].SetBool("IsFerrisAttack", true);
@@ -232,6 +232,7 @@ public class GameManagerScript : MonoBehaviour
             animator.SetBool("IsFerrisAttack", false);
             animator.SetBool("IsHammerAttack", false);
             animator.SetBool("IsHit", false);
+            animator.SetBool("IsFerrisShot", false);
         }
     }
     
