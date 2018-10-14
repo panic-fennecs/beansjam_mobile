@@ -31,7 +31,7 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject[] Players;
 
-    private Attack[] player_choices;
+    public Attack[] player_choices;
     private bool round_running;
 
     void Awake()

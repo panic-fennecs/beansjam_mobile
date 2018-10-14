@@ -15,10 +15,7 @@ public class AttackButtonScript : MonoBehaviour
     {
 		if (Input.mousePresent) {
 			if (Input.GetMouseButtonDown(0) && Collides(Input.mousePosition)) {
-				AppearPressed();
 				OnPress();
-			} else {
-				AppearReleased();
 			}
 		}
 
@@ -33,21 +30,16 @@ public class AttackButtonScript : MonoBehaviour
 
             if (t.phase == TouchPhase.Began) { 
                 if (collides_present) {
-                    AppearPressed();
                     OnPress();
                 }
             }
-            if (t.phase == TouchPhase.Moved) {
-                if (collides_past && !collides_present) {
-                    AppearReleased();
-                }
-            }
-            if (t.phase == TouchPhase.Ended) {
-                if (collides_present) {
-                    AppearReleased();
-                }
-            }
         }
+
+		if (attack == GameManagerScript.Instance.player_choices[PlayerID]) {
+			AppearPressed();
+		} else {
+			AppearReleased();
+		}
     }
 
     void OnPress()
